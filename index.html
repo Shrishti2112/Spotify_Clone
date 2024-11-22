@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spotify Clone</title>
+  <style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    body {
+      font-family: 'Spotify-Font', sans-serif;
+      background-color: #121212;
+      color: #fff;
+      display: flex;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px;
+      background-color: #000;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    nav ul {
+      display: flex;
+      list-style-type: none;
+    }
+
+    nav li {
+      margin-left: 16px;
+    }
+
+    nav a {
+      color: #b3b3b3;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    
+    main {
+
+      flex-grow: 1;
+      padding: 20px;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: row; 
+        height: 100vh; 
+    }
+    
+    aside {
+        width: 20%; 
+        background-color: #000; 
+        height: 100%; 
+    
+    main {
+        flex-grow: 1; 
+        padding: 20px; 
+        background-color: #121212; 
+    }
+    body {
+        display: flex;
+        min-height: 100vh;
+        margin: 0;
+      }
+      
+      aside {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 320px;
+        padding: 16px;
+        background-color: #000;
+        border-right: 1px solid #282828;
+        overflow-y: auto; 
+      
+      main {
+        margin-left: 150px; 
+        flex-grow: 1;
+        width: calc(100% - 150px); 
+    }
+    
+   
+    .library-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .library-header h2 {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .add-button {
+      background: none;
+      border: none;
+      font-size: 20px;
+      color: #1db954;
+      cursor: pointer;
+    }
+
+   
+    .card {
+      background-color: #181818;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 12px;
+      color: #b3b3b3;
+      margin-bottom: 16px;
+    }
+
+    .action-button {
+      background-color: white;
+      color: black;
+      border: none;
+      padding: 8px 12px;
+      font-size: 12px;
+      border-radius: 20px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+   
+    .footer {
+      margin-top: auto;
+      color: #b3b3b3;
+      font-size: 12px;
+    }
+
+    .footer ul {
+      list-style: none;
+      margin-bottom: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .footer ul li {
+      margin: 0;
+    }
+
+    .footer ul li a {
+      color: #b3b3b3;
+      text-decoration: none;
+    }
+
+    .language-button {
+      background: none;
+      border: 1px solid #b3b3b3;
+      color: #b3b3b3;
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+
+
+    .section-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+
+   
+    .artist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      grid-gap: 32px;
+    }
+
+    .artist-card {
+      text-align: center;
+    }
+
+    .artist-card img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 8px;
+    }
+
+    .artist-card h3 {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+   
+    .album-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      grid-gap: 32px;
+    }
+
+    .album-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    .album-card h3 {
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: white;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #000;
+    height: 64px;
+  }
+  
+  
+  .header-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .spotify-logo {
+    width: 30px;
+    margin-right: 15px;
+  }
+  
+  .icon {
+    width: 32px;
+    height: 32px;
+    background-color: #181818;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .search-container {
+    display: flex;
+    align-items: center;
+    background-color: #181818;
+    border-radius: 20px;
+    padding: 5px 10px;
+    flex: 1;
+    max-width: 600px;
+    margin: 0 20px;
+  }
+  
+  .search-icon,
+  .clear-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: white;
+    font-size: 14px;
+    margin: 0 10px;
+  }
+  
+  .search-input::placeholder {
+    color: #b3b3b3;
+  }
+  
+ 
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .signup-btn {
+    color: #b3b3b3;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .login-btn {
+    background-color: white;
+    color: black;
+    text-decoration: none;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+    .album-card p {
+      color: #b3b3b3;
+      font-size: 14px;
+    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: white;
+    padding: 20px;
+  }
+  
+  
+  .featured-charts h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  
+  .charts-container {
+    display: flex;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+  
+  
+  .chart-card {
+    background-color: #181818;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+  }
+  
+  .chart-card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .chart-card p {
+    font-size: 14px;
+    color: #b3b3b3;
+  }
+  
+  .chart-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  .arrow {
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: 5px;
+  }
+  
+  .chart-location {
+    font-size: 14px;
+    font-weight: bold;
+    color: #b3b3b3;
+    text-transform: uppercase;
+  }
+  
+  
+  .chart-card.purple {
+    background-color: #6a1b9a; 
+  }
+  
+  .chart-card.red {
+    background-color: #d32f2f; 
+  }
+  
+  .chart-card.teal {
+    background: linear-gradient(to bottom right, #00796b, #004d40); 
+  }
+  
+  .chart-card.pink {
+    background: linear-gradient(to bottom right, #f06292, #d81b60); 
+  }
+ 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: white;
+    padding: 20px;
+  }
+  
+  .zzzzz-section {
+    padding: 20px;
+  }
+
+  .zzzzz-section h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  .sleep-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  
+  .card {
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .card p {
+    font-size: 14px;
+    color: #dcdcdc;
+  }
+
+  
+  .card:nth-child(1) {
+    background: linear-gradient(135deg, #4a148c, #6a1b9a);
+  }
+
+  .card:nth-child(2) {
+    background: linear-gradient(135deg, #1a237e, #283593);
+  }
+
+  .card:nth-child(3) {
+    background: linear-gradient(135deg, #00695c, #00897b);
+  }
+
+  .card:nth-child(4) {
+    background: linear-gradient(135deg, #01579b, #0277bd);
+  }
+
+  .card:nth-child(5) {
+    background: linear-gradient(135deg, #004d40, #00796b);
+  }
+
+  .card:nth-child(6) {
+    background: linear-gradient(135deg, #bf360c, #d84315);
+  }
+
+  
+  .show-all {
+    display: inline-block;
+    margin-top: 20px;
+    text-decoration: none;
+    color: #1db954;
+    font-weight: bold;
+    font-size: 14px;
+    border: 1px solid #1db954;
+    padding: 8px 16px;
+    border-radius: 50px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .show-all:hover {
+    background-color: #1db954;
+    color: #ffffff;
+  }
+ 
+.footer {
+    background-color: #181818;
+    padding: 20px 40px;
+    color: white;
+  }
+  
+  .footer-container {
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start;
+    flex-wrap: wrap; 
+  }
+  
+  .footer-section {
+    flex: 1; 
+    min-width: 150px; 
+    margin-right: 20px; 
+  }
+  
+  .footer-section:last-child {
+    margin-right: 0;
+  }
+  
+  .footer-section h4 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-section ul li {
+    font-size: 12px; 
+    color: #b3b3b3;
+    margin-bottom: 5px;
+  }
+  
+  .footer-section ul li a {
+    color: #b3b3b3;
+    text-decoration: none;
+  }
+  
+  .footer-section ul li a:hover {
+    color: white;
+  }
+  
+  .social-links {
+    display: flex;
+    gap: 10px; 
+  }
+  
+  .social-links a {
+    font-size: 14px;
+    color: #b3b3b3;
+  }
+  
+  .social-links a:hover {
+    color: white;
+  }
+  
+  
+   
+    .chart-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-gap: 32px;
+    }
+
+    .chart-card {
+      background-color: #282828;
+      border-radius: 4px;
+      padding: 16px;
+    }
+
+    .chart-card h3 {
+      font-size: 16px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .chart-card p {
+      color: #b3b3b3;
+      font-size: 14px;
+    }
+  </style>
+  
+</head>
+<body>
+  
+  <aside>
+    <div>
+      <div class="library-header">
+        <h2>Your Library</h2>
+        <button class="add-button">+</button>
+      </div>
+      <div class="card">
+        <h3>Create your first playlist</h3>
+        <p>It's easy, we'll help you</p>
+        <button class="action-button">Create playlist</button>
+      </div>
+      <div class="card">
+        <h3>Let's find some podcasts to follow</h3>
+        <p>We'll keep you updated on new episodes</p>
+        <button class="action-button">Browse podcasts</button>
+      </div>
+    </div>
+    <div class="footer">
+      <ul>
+        <li><a href="#">Legal</a></li>
+        <li><a href="#">Safety & Privacy Center</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Cookies</a></li>
+        <li><a href="#">About Ads</a></li>
+        <li><a href="#">Accessibility</a></li>
+      </ul>
+      <button class="language-button">English</button>
+    </div>
+  </aside>
+
+  
+  <main>
+    
+    <header>
+        <div class="header-left">
+          
+          <img src="assets/spotify-logo.png" alt="Spotify Logo" class="spotify-logo">
+         
+          <div class="icon home-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24" height="24">
+              <path d="M10.571 2.572L2 10.143V21a1 1 0 001 1h6v-6h6v6h6a1 1 0 001-1V10.143l-8.571-7.571a1.5 1.5 0 00-1.858 0z"></path>
+            </svg>
+          </div>
+        </div>
+      
+        
+        <div class="search-container">
+          <div class="search-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24" height="24">
+              <path d="M10 2a8 8 0 105.293 14.293l4.999 4.999a1 1 0 001.414-1.414l-4.999-4.999A8 8 0 0010 2zm0 2a6 6 0 110 12A6 6 0 0110 4z"></path>
+            </svg>
+          </div>
+          <input type="text" placeholder="What do you want to play?" class="search-input">
+          <div class="clear-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24" height="24">
+              <path d="M6.293 6.293a1 1 0 011.414 0L12 10.586l4.293-4.293a1 1 0 011.414 1.414L13.414 12l4.293 4.293a1 1 0 01-1.414 1.414L12 13.414l-4.293 4.293a1 1 0 01-1.414-1.414L10.586 12 6.293 7.707a1 1 0 010-1.414z"></path>
+            </svg>
+          </div>
+        </div>
+      
+        
+        <div class="header-right">
+          <a href="#" class="signup-btn">Sign up</a>
+          <a href="#" class="login-btn">Log in</a>
+        </div>
+      </header>
+      
+
+  <main>
+    <section>
+      <h2 class="section-title">Popular artists</h2>
+      <div class="artist-grid">
+        <div class="artist-card">
+          <img src="assets/pritam.png" alt="Pritam">
+          <h3>Pritam</h3>
+        </div>
+        <div class="artist-card">
+          <img src="assets/sachin.png" alt="Sachin-Jigar">
+          <h3>Sachin-Jigar</h3>
+        </div>
+        <div class="artist-card">
+          <img src="assets/rahman.png" alt="A.R. Rahman">
+          <h3>A.R. Rahman</h3>
+        </div>
+        <div class="artist-card">
+          <img src="assets/arijit.png" alt="Arijit Singh">
+          <h3>Arijit Singh</h3>
+        </div>
+        <div class="artist-card">
+          <img src="assets/anirudh.png" alt="Anirudh Ravichander">
+          <h3>Anirudh Ravichander</h3>
+        </div>
+        
+        <div class="artist-card">
+          <img src="assets/atif.png" alt="Atif Aslam">
+          <h3>Atif Aslam</h3>
+        </div>
+        <div class="artist-card">
+            <img src="assets/anirudh.png" alt="Anirudh Ravichander">
+            <h3>Anirudh Ravichander</h3>
+          </div>
+          <div class="artist-card">
+            <img src="assets/atif.png" alt="Atif Aslam">
+            <h3>Atif Aslam</h3>
+          </div>
+      </div>
+    </section>
+<br>
+
+    <section>
+      <h2 class="section-title">Popular albums and singles</h2>
+      <div class="album-grid">
+        <div class="album-card">
+          <img src="assets/ashiqui2.png" alt="Aashiqui 2">
+          <h3>Aashiqui 2</h3>
+          <p>Mithoon, Ankit Tiwari, Jeet Gannguli</p>
+        </div>
+        <div class="album-card">
+          <img src="assets/hone.png" alt="GLORY">
+          <h3>GLORY</h3>
+          <p>Yo Yo Honey Singh</p>
+        </div>
+        <div class="album-card">
+          <img src="assets/anuv.png" alt="Jo Tum Mere Ho">
+          <h3>Jo Tum Mere Ho</h3>
+          <p>Anuv Jain</p>
+        </div>
+        
+        <div class="album-card">
+          <img src="assets/karan.png" alt="Making Memories">
+          <h3>Making Memories</h3>
+          <p>Karan Aujla, Ikky</p>
+        </div>
+        <div class="album-card">
+          <img src="assets/karan.png" alt="Patandar">
+          <h3>Patandar</h3>
+          <p>Arjan Dhillon</p>
+        </div>
+        <div class="album-card">
+          <img src="assets/pa.png" alt="Yeh Jawaani Hai Deewani">
+          <h3>Yeh Jawaani Hai Deewani</h3>
+          <p>Pritam</p>
+        </div>
+      </div>
+    </section>
+<br>
+<br>
+<section class="featured-charts">
+    <h2>Featured Charts</h2>
+    <div class="charts-container">
+      
+      <div class="chart-card purple">
+        <h3>Top Songs Global</h3>
+        <div class="chart-label">
+          <span>Weekly Music Charts</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <p>Your weekly update of the most played tracks right now - Global.</p>
+      </div>
+  
+      
+      <div class="chart-card red">
+        <h3>Top Songs USA</h3>
+        <div class="chart-label">
+          <span>Weekly Music Charts</span>
+          <span class="arrow">&rarr;</span>
+        </div>
+        <p>Your weekly update of the most played tracks right now - USA.</p>
+      </div>
+  
+     
+      <div class="chart-card teal">
+        <h3>Top 50</h3>
+        <span class="chart-location">GLOBAL</span>
+        <p>Your daily update of the most played tracks right now - Global.</p>
+      </div>
+  
+     
+      <div class="chart-card pink">
+        <h3>Top 50</h3>
+        <span class="chart-location">USA</span>
+        <p>Your daily update of the most played tracks right now - USA.</p>
+      </div>
+    </div>
+  </section>
+  
+<br>
+<br>
+<section class="zzzzz-section">
+    <h2>Zzzzzz</h2>
+    <div class="sleep-cards">
+      <div class="card">
+        <h3>lofi sleep</h3>
+        <p>Instrumental beats for a restful night's sleep.</p>
+      </div>
+      <div class="card">
+        <h3>Sleep</h3>
+        <p>Gentle Ambient piano to help you unwind.</p>
+      </div>
+      <div class="card">
+        <h3>Deep Sleep</h3>
+        <p>Soothing, minimalist ambient sounds to relax.</p>
+      </div>
+      <div class="card">
+        <h3>Floating Through Space</h3>
+        <p>Ambient drone to make you feel weightless.</p>
+      </div>
+      <div class="card">
+        <h3>Night Rain</h3>
+        <p>Sleep with sounds of pouring rain and thunder.</p>
+      </div>
+      <div class="card">
+        <h3>Jazz for Sleep</h3>
+        <p>Let these calm Jazz tracks lull you to sleep.</p>
+      </div>
+    </div>
+    <a href="#" class="show-all">Show all</a>
+  </section>
+  
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-section">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Jobs</a></li>
+          <li><a href="#">For the Record</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Communities</h4>
+        <ul>
+          <li><a href="#">For Artists</a></li>
+          <li><a href="#">Developers</a></li>
+          <li><a href="#">Advertising</a></li>
+          <li><a href="#">Investors</a></li>
+          <li><a href="#">Vendors</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Useful links</h4>
+        <ul>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Free Mobile App</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Spotify Plans</h4>
+        <ul>
+          <li><a href="#">Premium Individual</a></li>
+          <li><a href="#">Premium Duo</a></li>
+          <li><a href="#">Premium Family</a></li>
+          <li><a href="#">Premium Student</a></li>
+          <li><a href="#">Spotify Free</a></li>
+        </ul>
+      </div>
+      <div class="footer-section social-links">
+        <a href="#">Instagram</a>
+        <a href="#">Twitter</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+  </footer>
+  
+  
+  </main>
+  </main>
+</body>
+</html>
